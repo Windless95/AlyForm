@@ -77,8 +77,14 @@ function App() {
                     >
                       Result
                     </label>
-                    <div className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                      <p>{ result ? result : "Placeholder" }</p>
+                    <div className="mt-1">
+                    <input
+                        type="text"
+                        name="second"
+                        id="second"
+                        autocomplete="second"
+                        className="block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
                     </div>
                   </div>
                 </div>
