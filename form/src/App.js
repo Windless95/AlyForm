@@ -2,48 +2,51 @@ import { React, Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
-function App() {
-  const [open, setOpen] = useState(true);
-  const [input1, setInput1] = useState(" ")
-  const [input2, setInput2] = useState(" ")
 
-  const PopUp = ({ input1 = 0, input2 = 0 }) => {
-    const [difference, setDifference] = useState(0);
+const PopUp = ({ input1 = 0, input2 = 0 }) => {
+  const [difference, setDifference] = useState(0);
 
-    useEffect(() => {
-        setDifference(input2 - input1);
-    }, [input1, input2]);
+  useEffect(() => {
+      setDifference(input1 - input2);
+  }, [input1, input2]);
 
-    return (
-        <>
-            <p className="text-sm text-gray-500">Difference: {difference}</p>
-            <p className="text-sm text-gray-500">Half of Difference: {difference * 0.5}</p>
-            <p className="text-sm text-gray-500">Quarter of Difference: {difference * 0.25}</p>
-        </>
-    )
+  return (
+      <>
+          <p className="text-sm text-white">Difference: {difference}</p>
+          <p className="text-sm text-white">Half of Difference: {difference * 0.5}</p>
+          <p className="text-sm text-white">Quarter of Difference: {difference * 0.25}</p>
+      </>
+  )
 }
 
 
+function App() {
+  const [open, setOpen] = useState(false);
+  const [input1, setInput1] = useState(" ")
+  const [input2, setInput2] = useState(" ")
+
+
+
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
-      <div className="border-solid border-10 m-8 flex h-3/4 w-3/4 items-center bg-gradient-to-bl from-cyan-400 via-white to-black">
+    <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-primary-dark to-black">
+      <div className="border-solid border-10 m-8 flex h-3/4 w-3/4 items-center ">
         <div className="mx-auto max-h-full max-w-3xl">
-          <form className="space-y-8 divide-y divide-gray-200">
+          <div className="space-y-8 divide-y divide-gray-200">
             <div className="space-y-8 divide-y divide-gray-200">
               <div className="pt-8">
                 <div>
-                  <h3 className="text-lg text-center font-medium leading-6 text-gray-900">
-                    Calculation
+                  <h3 className="text-lg text-center font-medium leading-6 text-white">
+                    Percentage Calculator
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500 text-center">Demo</p>
+                  <p className="mt-1 text-sm text-white text-center">Demo</p>
                 </div>
                 <div className="mt-6 flex w-full gap-3">
                   <div className="flex-1">
                     <label
                       htmlFor="first-name"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-white"
                     >
-                      1
+                     Pre-suit Settlement Demand
                     </label>
                     <div className="mt-1">
                       <input
@@ -61,9 +64,9 @@ function App() {
                   <div className="flex-1">
                     <label
                       htmlFor="second"
-                      className="block text-sm px-2 font-medium text-gray-700"
+                      className="block text-sm px-2 font-medium text-white"
                     >
-                      2
+                      Pre-suit Settlement Offer
                     </label>
                     <div className="mt-1">
                       <input
@@ -83,14 +86,14 @@ function App() {
             <div className="pt-5">
               <div className="flex justify-center">
                 <button
-                  onClick={() => setOpen((open) => !open)}
+                  onClick={() => setOpen(true)}
                   type="submit"
                   className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   Calculate Percentage
                 </button>
                 <Transition.Root show={open} as={Fragment}>
-                  <Dialog as="div" className="relative z-40" onClose={setOpen}>
+                <Dialog as="div" className="relative z-40" onClose={() => setOpen(false)}>
                     <Transition.Child
                       as={Fragment}
                       enter="ease-out duration-300"
@@ -114,7 +117,7 @@ function App() {
                           leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                           leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                          <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                          <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-primary-dark px-40 pt-10 pb-10 text-left shadow-xl transition-all">
                             <div>
                               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                                 <CheckIcon
@@ -125,14 +128,14 @@ function App() {
                               <div className="mt-3 text-center sm:mt-5">
                                 <Dialog.Title
                                   as="h3"
-                                  className="text-lg font-medium leading-6 text-gray-900"
+                                  className="text-lg font-medium leading-6 text-white"
                                 >
                                   RESULT
                                 </Dialog.Title>
                                 <div className="mt-2">
-                                  <p className="text-sm text-gray-500">
-                                    answer
-                                  </p>
+                                  <div className="">
+                                  <PopUp input1={Number(input1)} input2={Number(input2)} />
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -153,7 +156,7 @@ function App() {
                 </Transition.Root>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
