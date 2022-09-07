@@ -12,9 +12,9 @@ const PopUp = ({ input1 = 0, input2 = 0 }) => {
 
   return (
       <>
-          <p className="text-sm text-white">if the lower threshold is up until : {difference}$</p>
-          <p className="text-sm text-white">if the middle threshold is between : {difference}$ and up until {difference * 0.5}$</p>
-          <p className="text-sm text-white">if the upper threshold is : {difference * 0.5}$ and after {difference * 0.25}$</p>
+          <p className="text-sm text-white">The lower bracket is up until : {difference * 25}$</p>
+          <p className="text-sm text-white">The middle bracket is between : {difference * 0.25}$ and up until {difference * 0.5}$</p>
+          <p className="text-sm text-white">The upper bracket is : {difference * 0.5}$ and up</p>
       </>
   )
 }
